@@ -1,0 +1,24 @@
+.label-all {
+    margin: 24px 0;
+}
+
+.label-all {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.label-all input {
+    background-color: white;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.label-color input {
+    height: 40px;
+    padding: 5px 24px;
+}

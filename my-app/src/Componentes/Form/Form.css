@@ -1,0 +1,21 @@
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 80px 50px;
+}
+
+.form-container .form {
+    background-color: #f7f7f7;
+    border-radius: 24px;
+    padding: 36px 80px;
+    flex: 1;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-container .form h2 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 32px;
+}

@@ -1,0 +1,62 @@
+.card {
+    position: relative;
+    width: 280px;
+    margin: 20px;
+}
+
+.card .header {
+    background-color:  #F0F0F0;
+    border-radius: 10px 10px 0px 0px;
+}
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #FFFFFF;
+    background-color: #FFFFFF;
+    position: relative;
+    bottom: -60px;
+}
+
+.card .bottom {
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+.card .bottom h4 {
+    color: #6278F7;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card .bottom h5 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+    padding: 0 16px;
+}
+
+.delete {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.bottom .heart {
+    transform: scale(1);
+    margin-bottom: 20px;
+    transition: 150ms;
+}
+
+.bottom .heart:active{
+    transform: scale(1.3);
+    transition: 150ms;
+}

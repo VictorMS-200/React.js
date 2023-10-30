@@ -1,0 +1,24 @@
+footer {
+    background: #6278F7;
+    text-align: center;
+    color: #FFF;
+    padding: 24px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+footer p {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+footer ul li:last-child {
+    margin-right: 0;
+}
