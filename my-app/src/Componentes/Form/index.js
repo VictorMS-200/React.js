@@ -7,24 +7,24 @@ import './Form.css'
 const Formulario = ({ functionAgents, onSave, onSaveFunction }) => {
 
     const [name, setName] = useState('')
-    const [country, setCountry] = useState('')
+    const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
     const [role, setRole] = useState('')
     const [functionName, setFunctionName] = useState('')
     const [functionColor, setFunctionColor] = useState('')
 
     const onSaveForm = (event) => {
+        console.log('onSaveForm')
+        console.log(name, description, image, role)
         event.preventDefault();
         onSave({
             name,
-            country,
+            description,
             image,
-            role,
-            favourite: false,
-
+            role
         })
         setName('')
-        setCountry('')
+        setDescription('')
         setImage('')
         setRole('')
     }
@@ -51,10 +51,10 @@ const Formulario = ({ functionAgents, onSave, onSaveFunction }) => {
 
                 <Label 
                     required={true} 
-                    label="Born Country" 
-                    placeholder="Type the country that the agent came from"
-                    value={country}
-                    onChange={value => setCountry(value)} 
+                    label="Description" 
+                    placeholder="Type the description that the agent came from"
+                    value={description}
+                    onChange={value => setDescription(value)} 
                 />
 
                 <Label 

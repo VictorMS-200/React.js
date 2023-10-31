@@ -11,22 +11,22 @@ function App() {
   const [functionAgent, setFunction] = useState([
     {
       id: uuidv4(),
-      name: 'Duelista',
+      name: 'Duelist',
       color: '#82CFFA'
     },
     {
       id: uuidv4(),
-      name: 'Sentinela',
+      name: 'Sentinel',
       color: '#A6D157'
     },
     {
       id: uuidv4(),
-      name: 'Controlador',
+      name: 'Controller',
       color: '#E06B69'
     },
     {
       id: uuidv4(),
-      name: 'Iniciador',
+      name: 'Initiator',
       color: '#D86EBF'
     }
   ])
@@ -35,6 +35,11 @@ function App() {
   const [agents, setAgents] = useState([])
 
 
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/VictorMS-200/React.js/main/agents.json')
+    .then(response => response.json())
+    .then(data => setAgents(data))
+  }, [])
 
   // This function is to change the color of the header card and the background 
   function changeColor(color, id) {
@@ -71,7 +76,6 @@ function App() {
   return (
     <div className="App">
       <Banner />
-
       {/* Forms to register a new agents */}
       <Form
         functionAgents={functionAgent.map(functionAgent => functionAgent.name)}
@@ -86,8 +90,8 @@ function App() {
         {/* A map to show all agents register in the array (team) */}
         {functionAgent.map(functionAgent => 
           <Team
-            key={functionAgent.name}
-            agents={agents.filter(agent => agent.cargo === functionAgent.name)}
+            key={functionAgent.id}
+            agents={agents.filter(agent => agent.role === functionAgent.name)}
             team={functionAgent}
             onDelete={onDelete}
             changeColor={changeColor}

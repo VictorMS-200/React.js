@@ -31,7 +31,7 @@ const Card = ({ agent, color, onDelete, changeFavourite }) => {
             {/* Bottom card */}
             <div className='bottom'>
                 <h4>{agent.name}</h4>
-                <h5>{agent.country}</h5>
+                <h5>{agent.description}</h5>
                 {!agent.favourite
                     ? <AiOutlineHeart className='heart' { ...propsfavourite } />
                     : <AiFillHeart className='heart' { ...propsfavourite } color='red'/>
