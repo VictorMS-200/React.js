@@ -15,9 +15,13 @@ public class Functions
         {
             try 
             {
+                // Get the agents from the API
                 var response = await client.GetStringAsync("https://valorant-api.com/v1/agents");
+                
+                // Deserialize the response
                 var agents = JsonSerializer.Deserialize<Data>(response);
 
+                // Add each agent to the list if they exist in the game
                 foreach (var agent in agents!.data!)
                 {
                     if (agent.Exists)
