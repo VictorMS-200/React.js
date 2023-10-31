@@ -5,7 +5,7 @@ namespace ValorantAPI.Models;
 
 public class Agents
 {
-    
+
     [JsonPropertyName("displayName")]
     public string? name { get; set; }
 
@@ -24,6 +24,7 @@ public class Agents
 
 public class Role 
 {
+    
     [JsonPropertyName("displayName")]
     public string? displayName { get; set; }
 }

@@ -4,12 +4,12 @@ using ValorantAPI.Models;
 
 namespace ValorantAPI.Service;
 
-public class Funcoes
+public class Functions
 {
 
     public List<AgentsJson> _agentsList = new List<AgentsJson>();
 
-    public async Task GetAgentAsync()
+    public async Task GetAgentJsonAsync()
     {
         using (var client = new HttpClient())
         {
@@ -20,12 +20,15 @@ public class Funcoes
 
                 foreach (var agent in agents!.data!)
                 {
-                    if (agent.Exists) 
-                    {
-                        var agentObj = new AgentsJson(agent.name!, agent.description!, agent.image!, agent.role!.displayName!);
-                        _agentsList.Add(agentObj);
-                    }
+                    if (agent.Exists)
+                        _agentsList.Add(new AgentsJson(
+                            agent.name!, 
+                            agent.description!, 
+                            agent.image!, 
+                            agent.role!.displayName!
+                        ));
                 }
+                jsonSerialize();
             }
             catch (HttpRequestException e)
             {
@@ -35,12 +38,11 @@ public class Funcoes
         }
     }
 
-    public void jsonSerialize()
+    private void jsonSerialize()
     {
         using (FileStream fs = File.Create("agents.json"))
         {
             JsonSerializer.SerializeAsync(fs, _agentsList);
         }
-        Console.WriteLine();
     }
 }
