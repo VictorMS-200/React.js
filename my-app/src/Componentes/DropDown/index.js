@@ -8,7 +8,7 @@ const DropDown = (props) => {
                 onChange={event => props.onChange(event.target.value)}
                 required={props.required}
                 value={props.value}>
-                <option value=''>Selecione uma opção</option>
+                <option value=''>Select a option</option>
                 {props.options.map((option) => {
                     return <option key={option}>{option}</option>
                 })}

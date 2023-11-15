@@ -1,12 +1,15 @@
 .card {
     position: relative;
-    width: 280px;
-    margin: 20px;
+    width: 300px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: max-content 350px 1fr;
+    margin: 15px;
 }
 
 .card .header {
     background-color:  #F0F0F0;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
 }
 .card img {
     display: block;
@@ -14,49 +17,79 @@
     margin-right: auto;
     width: 100px;
     border-radius: 50%;
-    border: 5px solid #FFFFFF;
+    border: 4px solid rgb(133, 133, 133);
     background-color: #FFFFFF;
     position: relative;
-    bottom: -60px;
+    bottom: -50px;
 }
 
 .card .bottom {
+    background-repeat: no-repeat;
+    background-size: 300px 100px;
     text-align: center;
-    background: #FFFFFF;
+    background: rgb(255, 255, 255);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
-    border-radius: 0px 0px 10px 10px;
-    padding-top: 60px;
+    border-radius: 0px 0px 20px 20px;
+    padding-top: 30px;
     padding-bottom: 10px;
 }
 
 .card .bottom h4 {
-    color: #6278F7;
     font-size: 22px;
     line-height: 22px;
     font-weight: bold;
-    margin-bottom: 8px;
 }
 
-.card .bottom h5 {
+.card .bottom p {
+    text-align: left;
     font-size: 16px;
-    line-height: 22px;
+    font-weight: 500;
+    line-height: 20px;
     color: #212121;
-    padding: 0 16px;
+    padding: 0 20px;
 }
 
-.delete {
+.bottom .buttons {
     position: absolute;
-    right: -10px;
-    top: -10px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    margin: 30px;
+}
+
+.bottom .buttons .btn {
+    margin-right: 50px;
+    color: #444444;
+    background-color: #e9e9e9;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.bottom .buttons .btn:hover {
+    background-color: #d9d9d9;
+    transform: scale(1.05);
 }
 
 .bottom .heart {
     transform: scale(1);
-    margin-bottom: 20px;
-    transition: 150ms;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
 }
 
 .bottom .heart:active{
-    transform: scale(1.3);
-    transition: 150ms;
+    transform: scale(1.2);
+}
+
+.delete {
+    position: absolute;
+    cursor: pointer;
+    right: -10px;
+    top: -10px;
 }

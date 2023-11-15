@@ -19,8 +19,10 @@ const Team = ({ agents, team, onDelete, changeColor, changeFavourite }) => {
                 value={team.color} 
                 onChange={e => changeColor(e.target.value, team.id)}
             />
-            
-            <h3 style={{ borderColor: team.color }}>{team.name}</h3>
+            <div className='title'>
+                <img className='logo' src={team.image} alt={team.name} />
+                <h3 style={{ borderColor: team.color }}>{team.name}</h3>
+            </div>
                 
             {/* A map to show all agents register in the array (agents) */}
             <div className='agent'>

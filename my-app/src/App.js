@@ -1,109 +1,24 @@
-import { useEffect, useState } from 'react';
-import Banner from './Componentes/Banner';
-import Form from './Componentes/Form';
-import Team from './Componentes/Team';
-import Footer from './Componentes/Footer';
-import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
-function App() {
+import Agent from "./Pages/AgentPage";
+import Home from "./Pages/HomePage";
 
-  // This is the array of the main functions of the agents
-  const [functionAgent, setFunction] = useState([
-    {
-      id: uuidv4(),
-      name: 'Duelist',
-      color: '#82CFFA'
-    },
-    {
-      id: uuidv4(),
-      name: 'Sentinel',
-      color: '#A6D157'
-    },
-    {
-      id: uuidv4(),
-      name: 'Controller',
-      color: '#E06B69'
-    },
-    {
-      id: uuidv4(),
-      name: 'Initiator',
-      color: '#D86EBF'
-    }
-  ])
+import Footer from "./Componentes/Footer";
+import Banner from "./Componentes/Banner";
 
-  // This is the array that will receive the agents registered in the form
-  const [agents, setAgents] = useState([])
-
-
-  useEffect(() => {
-    fetch('https://raw.githubusercontent.com/VictorMS-200/React.js/main/agents.json')
-    .then(response => response.json())
-    .then(data => setAgents(data))
-  }, [])
-
-  // This function is to change the color of the header card and the background 
-  function changeColor(color, id) {
-    setFunction(functionAgent.map(agent => {
-      if (agent.id === id) {
-        agent.color = color
-      }
-      return agent
-    }))
-  }
-
-  // This function is to delete an agent from the array (agents)
-  function onDelete(id) {
-    setAgents(agents.filter(agent => agent.id !== id))
-  }
-
-  // This function is to change the favourite status of an agent
-  function changeFavourite(id) {
-    setAgents(agents.map(agent => {
-      if (agent.id === id) {
-        agent.favourite = !agent.favourite
-        console.log(agent.favourite)
-      }
-      return agent
-    }))
-  }
-
-  // This function is to register a new function in the array (functionAgent)
-  function onSaveFunction(newFunction) {
-    setFunction([...functionAgent, { id: uuidv4(), ...newFunction}])
-  }
-
-
+export default function App() {
   return (
-    <div className="App">
-      <Banner />
-      {/* Forms to register a new agents */}
-      <Form
-        functionAgents={functionAgent.map(functionAgent => functionAgent.name)}
-        onSaveFunction={onSaveFunction}
-        onSave={contributor => setAgents([...agents, contributor])}
-      />
-  
-      {/* Section to show all agents registered */}
-      <section className='teams'>
-        <h1>Agents</h1>
+    <>
+      <BrowserRouter>
+        <Banner />
 
-        {/* A map to show all agents register in the array (team) */}
-        {functionAgent.map(functionAgent => 
-          <Team
-            key={functionAgent.id}
-            agents={agents.filter(agent => agent.role === functionAgent.name)}
-            team={functionAgent}
-            onDelete={onDelete}
-            changeColor={changeColor}
-            changeFavourite={changeFavourite}
-          />
+        <Routes>
+          <Route path="/" element={ <Home/> } />
+          <Route path="/agents/:id" element={ <Agent/> } />
+        </Routes>
 
-        )}
-      </section>
-
-      <Footer />
-    </div>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;

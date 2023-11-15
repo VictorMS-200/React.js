@@ -4,35 +4,39 @@ import DropDown from '../DropDown';
 import { useState } from 'react'
 import './Form.css'
 
+
 const Formulario = ({ functionAgents, onSave, onSaveFunction }) => {
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
     const [role, setRole] = useState('')
+    const [background, setBackground] = useState('')
     const [functionName, setFunctionName] = useState('')
+    const [functionImage, setFunctionImage] = useState('')
     const [functionColor, setFunctionColor] = useState('')
 
     const onSaveForm = (event) => {
-        console.log('onSaveForm')
-        console.log(name, description, image, role)
         event.preventDefault();
         onSave({
             name,
             description,
             image,
-            role
+            role,
+            background
         })
         setName('')
         setDescription('')
         setImage('')
         setRole('')
+        setBackground('')
     }
 
     const onSaveFunctionForm = (event) => {
         event.preventDefault()
-        onSaveFunction({ name: functionName, color: functionColor})
+        onSaveFunction({ name: functionName, image: image, color: functionColor})
         setFunctionName('')
+        setFunctionImage('')
         setFunctionColor('')
     }
 
@@ -64,6 +68,14 @@ const Formulario = ({ functionAgents, onSave, onSaveFunction }) => {
                     value={image}
                     onChange={value => setImage(value)}
                 />
+
+                <Label 
+                    required={true} 
+                    label="Background Image url" 
+                    placeholder="Type the background image url of the agent" 
+                    value={background}
+                    onChange={value => setBackground(value)}
+                />
                 
                 <DropDown 
                     required={true} 
@@ -86,6 +98,14 @@ const Formulario = ({ functionAgents, onSave, onSaveFunction }) => {
                     placeholder="Type the name of the function"
                     value={functionName}
                     onChange={value => setFunctionName(value)} 
+                />
+
+                <Label 
+                    required
+                    label="Function image" 
+                    placeholder="Type the image url of the function"
+                    value={functionImage}
+                    onChange={value => setFunctionImage(value)} 
                 />
 
                 <Label 
